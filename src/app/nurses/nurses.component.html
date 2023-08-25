@@ -1,0 +1,109 @@
+<div class="container" *ngIf="!modal">
+    <div class="left box">
+        <p class="heading">All Nurses</p>
+        <div class="box1" *ngFor="let data of nursesData,let i = index">
+                <img src="../../assets/girl.avif" class="image" *ngIf="data.gender == 'Female'"/>
+                <img src="../../assets/boy.avif" class="image" *ngIf="data.gender == 'Male'"/>
+            <div class="text">
+                <h5>{{data.name}}</h5>
+                <p>Experence 4 years</p>
+                <p>{{data.zsr_number}}</p>
+                <p><i class="fa-solid fa-location-dot location"></i>{{data.address}}</p>
+            </div>
+            <div class="options">
+                <p>Acute Hospital</p>
+                <p>Private Care</p>
+                <p>Retirement and nursing homes</p>
+            </div>
+            <div class="btn-div">
+                <button class="orange" [routerLink]="['/profile',data.id]">View Profile</button>
+                <button class="blue" (click)="Modal()">Schedual Visit</button>
+                <button class="orange" (click)="selected(i)">Select</button>
+            </div>
+            <div class="stars">
+               <p>Rating : 4.3</p>
+            </div>
+        </div>
+    </div>
+    <div class="center">
+        <p>T.Amount</p>
+        <h5>USD 159</h5>
+        <p>Select Nurses</p>
+        <h6 *ngIf="numb < 10">0{{numb}}</h6>
+        <h6 *ngIf="numb > 9">{{numb}}</h6>
+        <button class="blue" (click)="selectAll()">Select All</button>
+        <button class="orange" (click)="unSelectAll()">UnSelect All</button>
+    </div>
+    <div class="right box">
+        <p class="heading">Your Selected Nurses</p>
+        <div class="box1" *ngFor="let data of newData,let i = index">
+            <img src="../../assets/girl.avif" class="image" *ngIf="data.gender == 'Female'"/>
+            <img src="../../assets/boy.avif" class="image" *ngIf="data.gender == 'Male'"/>
+        <div class="text">
+            <h5>{{data.name}}</h5>
+            <p>Experence 4 years</p>
+            <p>{{data.zsr_number}}</p>
+            <p><i class="fa-solid fa-location-dot location"></i>{{data.address}}</p>
+        </div>
+        <div class="options">
+            <p>Acute Hospital</p>
+            <p>Private Care</p>
+            <p>Retirement and nursing homes</p>
+        </div>
+        <div class="btn-div">
+            <button class="orange" [routerLink]="['/profile',data.id]">View Profile</button>
+            <button class="blue" (click)="Modal()">Schedual Visit</button>
+            <button class="orange" (click)="UnSelected(i)">UnSelect</button>
+        </div>
+        <div class="stars">
+           <p>Rating : 4.3</p>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="modal" *ngIf="modal">
+    <div class="schedules">
+        <h6 class="right-headings"><i class="fa-solid fa-calendar"></i>Schedules</h6>
+        <div class="schedules-mid">
+            <div class="schedules-text">
+                <div class="schdule-box">
+                    <div class="box-text">
+                        <p>Friday, March 20, 2020 - Tuesday, March 24, 2020</p>
+                        <p  class="time">17:00 - 22.00</p>
+                    </div>
+                    <div class="status">
+                        <p>Status : Not Avaliable</p>
+                    </div>
+                </div>
+                <div class="schdule-box">
+                    <div class="box-text">
+                        <p>Friday, March 20, 2020 - Tuesday, March 24, 2020</p>
+                        <p class="time">17:00 - 22.00</p>
+                    </div>
+                    <div class="status">
+                        <p>Status : Not Avaliable</p>
+                    </div>
+                </div>
+                <div class="schdule-box">
+                    <div class="box-text">
+                        <p>Friday, March 20, 2020 - Tuesday, March 24, 2020</p>
+                        <p class="time">17:00 - 22.00</p>
+                    </div>
+                    <div class="status">
+                        <p>Status : Not Avaliable</p>
+                    </div>
+                </div>
+                <div class="schdule-box">
+                    <div class="box-text">
+                        <p>Friday, March 20, 2020 - Tuesday, March 24, 2020</p>
+                        <p class="time">17:00 - 22.00</p>
+                    </div>
+                    <div class="status">
+                        <p>Status : Not Avaliable</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <i class="fa-solid fa-xmark cross" (click)="Modal()"></i>
+    </div>
+</div>
